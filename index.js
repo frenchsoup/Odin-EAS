@@ -1,3 +1,5 @@
+let gridDiv = document.getElementsByClassName('grid');
+
 /**
  * loop to create grid divs
  */
@@ -10,8 +12,10 @@ for (x = 0; x < 256; x++) {
   document.getElementById('gridContainer').appendChild(grid);
 }
 
-let gridDiv = document.getElementsByClassName('grid');
-
+/**
+ * loop to add event listener anf function to all gridDivs
+ * function changes background
+ */
 for (let i = 0; i < gridDiv.length; i++) {
   gridDiv[i].addEventListener('mouseover', function (e) {
     e.target.style.backgroundColor = 'black';
