@@ -13,7 +13,7 @@ for (x = 0; x < 256; x++) {
 }
 
 /**
- * loop to add event listener anf function to all gridDivs
+ * loop to add event listener and function to all gridDivs
  * function changes background
  */
 for (let i = 0; i < gridDiv.length; i++) {
