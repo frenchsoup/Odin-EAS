@@ -6,6 +6,8 @@ let gridDivs = document.getElementsByClassName('grid');
 let grid = document.createElement('div');
 // default grid size
 let gridSize = 16;
+let rainbow;
+let blackScale;
 
 /**
  * loop to create grid divs for default on page load
@@ -18,7 +20,15 @@ for (x = 0; x < gridSize * gridSize; x++) {
   grid.id = 'grid';
   document.getElementById('gridContainer').appendChild(grid);
 }
-etch();
+if (gridSize > 0) {
+  etch();
+}
+if (rainbow) {
+  rainbowMode();
+}
+if (blackScale) {
+  blackScaleMode();
+}
 
 /**
  * Method to prompt user for box size and create new grid
@@ -65,4 +75,30 @@ function clearGrid() {
     gridDivs[i].style.backgroundColor = 'white';
   }
   resizeGrid();
+}
+
+function rainbowMode() {
+  rainbow = true;
+  for (let i = 0; i < gridDivs.length; i++) {
+    gridDivs[i].addEventListener('mouseover', function (e) {
+      const randomR = Math.floor(Math.random() * 256);
+      const randomG = Math.floor(Math.random() * 256);
+      const randomB = Math.floor(Math.random() * 256);
+      e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+    });
+  }
+}
+
+function blackScaleMode() {
+  blackScale = true;
+  let opacity = 0.1;
+  for (let i = 0; i < gridDivs.length; i++) {
+    gridDivs[i].addEventListener('mouseover', function (e) {
+      e.target.style.backgroundColor = 'black';
+      e.target.style.opacity = opacity;
+      // for (let index = 0; index < array.length; index++) {
+      //   const element = array[index];
+      // }
+    });
+  }
 }
