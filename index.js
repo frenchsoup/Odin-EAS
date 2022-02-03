@@ -40,7 +40,7 @@ function resizeGrid() {
     '10'
   );
   let promptSize = parseInt(promptInput);
-  if (promptSize < 100) {
+  if (promptSize < 100 && promptSize != 1) {
     let newGridArea = promptSize * promptSize;
     for (x = 0; x < newGridArea; x++) {
       let grid = document.createElement('div');
@@ -51,8 +51,14 @@ function resizeGrid() {
       document.getElementById('gridContainer').appendChild(grid);
     }
     etch();
-  } else {
+  }
+  if (promptSize > 100) {
     alert('Number must be less than 100');
+    resizeGrid();
+  }
+  if (promptSize === 1) {
+    alert('Number must be greater than 1');
+    resizeGrid();
   }
 }
 
@@ -94,11 +100,9 @@ function blackScaleMode() {
   let opacity = 0.1;
   for (let i = 0; i < gridDivs.length; i++) {
     gridDivs[i].addEventListener('mouseover', function (e) {
+      opacity = opacity > 1 ? 0.1 : opacity + 0.1;
       e.target.style.backgroundColor = 'black';
       e.target.style.opacity = opacity;
-      // for (let index = 0; index < array.length; index++) {
-      //   const element = array[index];
-      // }
     });
   }
 }
