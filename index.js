@@ -101,6 +101,7 @@ function blackScaleMode() {
   for (let i = 0; i < gridDivs.length; i++) {
     gridDivs[i].addEventListener('mouseover', function (e) {
       opacity = opacity > 1 ? 0.1 : opacity + 0.1;
+      // short for if (opacity==1) opacity=0 else opacity=opacity+0.1
       e.target.style.backgroundColor = 'black';
       e.target.style.opacity = opacity;
     });
